@@ -62,7 +62,7 @@ class KnnRecommender:
 
         n_jobs: int or None, optional (default=None)
         """
-        if n_jobs and (n_jobs > 1 or n_jobs == -1):
+        if n_jobs and (n_jobs > 1 or n_jobs == -1): # parallelism requested: 1 single core, None and 0 falsy, -1 all cores
             os.environ['JOBLIB_TEMP_FOLDER'] = '/tmp'
         self.model.set_params(**{
             'n_neighbors': n_neighbors,
@@ -225,7 +225,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         prog="Movie Recommender",
         description="Run KNN Movie Recommender")
-    parser.add_argument('--path', nargs='?', default='../data/MovieLens',
+    parser.add_argument('--path', nargs='?', default='ml-latest-small',
                         help='input data path')
     parser.add_argument('--movies_filename', nargs='?', default='movies.csv',
                         help='provide movies filename')

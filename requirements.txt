@@ -1,0 +1,4 @@
+fuzzywuzzy
+pandas
+scipy
+scikit-learn
